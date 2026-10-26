@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo Editor</title>
+<meta name="description" content="Edit photos and pictures with layers, selections, brushes, adjustments and filters. Opens and saves Photoshop files. Everything stays on your computer.">
+<meta name="theme-color" content="#1b1d20">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+<script>
+  window.__errors = [];
+  addEventListener('error', (e) => window.__errors.push(String(e.message)));
+  addEventListener('unhandledrejection', (e) => window.__errors.push(String(e.reason && e.reason.message || e.reason)));
+</script>
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+<header class="band">
+  <img class="mark" src="assets/badger-mark.png" alt="">
+  <span class="title">PHOTO EDITOR</span>
+  <span class="company"><b>BADGER METAL &amp; MACHINE FABRICATION</b><small>Riverdale, New Jersey · Made in the USA</small></span>
+  <span class="spacer"></span>
+  <span class="update" id="update" hidden>A new version is ready. <button id="update-now">Restart now</button></span>
+</header>
+
+<nav class="menubar" id="menubar"></nav>
+<div class="options" id="options"></div>
+
+<main id="main">
+  <div class="tools" id="tools"></div>
+  <section class="center">
+    <div class="tabs" id="tabs"></div>
+    <div class="viewport" id="viewport">
+      <canvas id="view"></canvas>
+      <textarea id="text-input" hidden spellcheck="false"></textarea>
+      <section class="welcome" id="welcome">
+        <div class="card">
+          <img class="logo" src="assets/badger-logo.png" alt="Badger Metal &amp; Machine Fabrication">
+          <h1>Photo Editor</h1>
+          <p>Drop pictures here, paste a screenshot with Ctrl+V, or start a new one.</p>
+          <div class="welcome-buttons">
+            <button class="btn primary big" id="w-open">Open…</button>
+            <button class="btn big" id="w-new">New image…</button>
+          </div>
+          <p class="types">JPEG · PNG · WebP · GIF · BMP · TIFF · AVIF · SVG · Photoshop PSD (with layers)</p>
+          <p class="private">Your pictures never leave this computer.</p>
+        </div>
+      </section>
+    </div>
+  </section>
+  <aside class="panels" id="panels">
+    <section class="panel" id="color-panel">
+      <h2>Color</h2>
+      <div class="color-body">
+        <div class="swatch-pair">
+          <button class="sw fg" id="c-fg" title="Foreground color: click to change"></button>
+          <button class="sw bg" id="c-bg" title="Background color: click to change"></button>
+        </div>
+        <div class="color-fields">
+          <label>Hex <input id="c-hex" spellcheck="false" maxlength="7"></label>
+          <div class="color-btns">
+            <button class="btn small" id="c-swap" title="Swap foreground and background (X)">⇄ Swap</button>
+            <button class="btn small" id="c-reset" title="Black and white (D)">Reset</button>
+          </div>
+        </div>
+      </div>
+      <div class="palette" id="palette"></div>
+      <input type="color" id="c-picker" hidden>
+    </section>
+    <section class="panel" id="adjust-panel">
+      <h2>Adjustments</h2>
+      <div class="adjust-grid" id="adjust-grid"></div>
+    </section>
+    <section class="panel grow" id="layers-panel">
+      <h2>Layers</h2>
+      <div class="layer-props">
+        <select id="l-blend" title="Blend mode: how this layer mixes with the ones below"></select>
+        <label class="opacity" title="Layer opacity">Opacity <input type="number" id="l-opacity" min="0" max="100"><small>%</small></label>
+        <label class="lock" title="Lock the layer so it can't be changed"><input type="checkbox" id="l-lock"> Lock</label>
+      </div>
+      <input type="range" id="l-opacity-range" min="0" max="100" title="Layer opacity">
+      <div class="layer-list" id="layer-list"></div>
+      <div class="panel-foot">
+        <button class="icon-btn" id="l-new" title="New layer (Ctrl+Shift+N)">＋</button>
+        <button class="icon-btn" id="l-dup" title="Duplicate layer (Ctrl+J)">⧉</button>
+        <button class="icon-btn" id="l-up" title="Move layer up (Ctrl+])">▲</button>
+        <button class="icon-btn" id="l-down" title="Move layer down (Ctrl+[)">▼</button>
+        <button class="icon-btn" id="l-merge" title="Merge down (Ctrl+E)">⤓</button>
+        <span class="spacer"></span>
+        <button class="icon-btn danger" id="l-del" title="Delete layer">🗑</button>
+      </div>
+    </section>
+    <section class="panel" id="history-panel">
+      <h2>History</h2>
+      <div class="history-list" id="history-list"></div>
+    </section>
+  </aside>
+</main>
+
+<footer class="statusbar">
+  <span id="st-zoom"></span>
+  <span id="st-size"></span>
+  <span id="st-pos"></span>
+  <span id="st-color"></span>
+  <span class="msg" id="st-msg"></span>
+  <span class="spacer"></span>
+  <span class="private">Everything stays on this computer</span>
+</footer>
+
+<div class="menu" id="menu" hidden></div>
+<div class="drop-hint" id="drop-hint" hidden><b id="drop-text"></b></div>
+<input type="file" id="file-input" multiple hidden>
+</body>
+</html>

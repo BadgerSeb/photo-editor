@@ -1,0 +1,32 @@
+{
+  "name": "Photo Editor — Badger Metal & Machine Fabrication",
+  "short_name": "Photo Editor",
+  "description": "Edit photos and pictures with layers, selections, brushes, adjustments and filters. Opens and saves Photoshop files. Everything stays on your computer.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1b1d20",
+  "theme_color": "#1b1d20",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "file_handlers": [
+    {
+      "action": "./",
+      "accept": {
+        "image/jpeg": [".jpg", ".jpeg", ".jfif"],
+        "image/png": [".png"],
+        "image/webp": [".webp"],
+        "image/gif": [".gif"],
+        "image/bmp": [".bmp"],
+        "image/tiff": [".tif", ".tiff"],
+        "image/avif": [".avif"],
+        "image/vnd.adobe.photoshop": [".psd", ".psb"]
+      },
+      "launch_type": "multiple-clients"
+    }
+  ]
+}

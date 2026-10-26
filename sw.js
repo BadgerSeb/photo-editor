@@ -2,7 +2,7 @@
 // new VERSION and file list (tools\stamp.ps1); browsers see the changed file, download the new
 // version in the background, and the page switches to it (right away when nothing is open).
 
-const VERSION = '2026.10.26-1117';
+const VERSION = '2026.10.26-1200';
 const FILES = ['./', 'assets/badger-logo.png', 'assets/badger-mark.png', 'css/app.css', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'index.html', 'js/adjust.js', 'js/app.js', 'js/dialogs.js', 'js/doc.js', 'js/files.js', 'js/filters.js', 'js/filter-worker.js', 'js/ops.js', 'js/panels.js', 'js/psd.js', 'js/selection.js', 'js/state.js', 'js/tools.js', 'js/util.js', 'js/view.js', 'manifest.webmanifest', 'vendor/fflate.js', 'vendor/LICENSES/fflate.txt', 'vendor/LICENSES/utif2.txt', 'vendor/UTIF.js'];
 
 const CACHE = 'photo-editor-' + VERSION;
